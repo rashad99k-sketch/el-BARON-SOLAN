@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: grok6
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m solana_app
+    healthCheckPath: /health
+    envVars:
+      - key: GROK6_MODE
+        value: PAPER
+      - key: GROK6_LIVE_TRADING
+        value: "false"
+      - key: GROK6_PHANTOM_PUBLIC_ADDRESS
+        sync: false
+      - key: GROK6_KILL_SWITCH
+        value: "false"
+      - key: GROK6_HOST
+        value: 0.0.0.0
+      - key: GROK6_DB_PATH
+        value: /var/data/grok6.db
+      - key: GROK6_SOCIAL_RADAR_ENABLED
+        value: "true"
+      - key: GROK6_SOCIAL_POLL_INTERVAL_SECONDS
+        value: "60"
+      - key: X_API_BEARER_TOKEN
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_IDS
+        sync: false
+    disk:
+      name: grok6-data
+      mountPath: /var/data
+      sizeGB: 1

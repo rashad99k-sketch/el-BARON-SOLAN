@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#070b14"/>
+<title>{% block title %}GROK6 · Command Center V7{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/command_center.css') }}"/>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-lockup"><span class="brand-mark">G6</span><div><strong>GROK6</strong><small>SOLANA INTELLIGENCE TERMINAL</small></div></div>
+  <div class="top-status"><span class="badge info">SOLANA ONLY</span><span id="mode-badge" class="badge warn">PAPER MODE</span><span id="execution-badge" class="badge danger">LIVE EXECUTION DISABLED</span></div>
+  <div class="clock-block"><span class="pulse-dot"></span><span id="connection-label">CONNECTING</span><time id="clock">--:--:-- UTC</time></div>
+</header>
+<main class="app-shell">
+  {% block body %}{% endblock %}
+</main>
+<footer class="footer"><span>GROK6 V7 · RUNTIME STATUS</span><span id="last-refresh">Waiting for first refresh</span><span id="execution-footer">PAPER EXECUTION · NO LIVE ORDERS</span></footer>
+<script src="{{ url_for('static', filename='js/command_center.js') }}" defer></script>
+</body>
+</html>
